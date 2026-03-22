@@ -39,7 +39,7 @@ router.post("/", upload.array("images"), async (req, res) => {
     try {
 
       const aiRes = await axios.get(
-        "https://greenpath-1.onrender.com/predict",
+        "https://greenpath-ai-lbzz.onrender.com/predict",
         {
           params: {
             cropType: crop.cropType,
@@ -138,7 +138,7 @@ router.get("/:id/ai-refresh", async (req, res) => {
     }
 
     const aiRes = await axios.get(
-      "https://greenpath-1.onrender.com/predict",
+      "https://greenpath-ai-lbzz.onrender.com/predict",
       {
         params: {
           cropType: crop.cropType,

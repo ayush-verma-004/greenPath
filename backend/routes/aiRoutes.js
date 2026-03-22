@@ -15,7 +15,7 @@ router.get("/smart-price", async (req, res) => {
       });
     }
 
-    const aiServiceUrl = process.env.AI_SERVICE_URL || "http://127.0.0.1:8000/predict";
+    const aiServiceUrl = process.env.AI_SERVICE_URL || "https://greenpath-ai-lbzz.onrender.com/predict";
     const response = await axios.get(
       aiServiceUrl,
       {
