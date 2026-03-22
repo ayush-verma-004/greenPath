@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
+import { getImageUrl } from "../utils/getImageUrl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
@@ -106,11 +107,7 @@ const CropDetails = () => {
               {crop.images && crop.images.length > 0 ? (
                 <>
                   <img
-                    src={
-                      crop.images[currentIndex].startsWith("http")
-                        ? crop.images[currentIndex]
-                        : `${crop.images[currentIndex]}`
-                    }
+                    src={getImageUrl(crop.images[currentIndex])}
                     alt="crop"
                     className="w-full h-full object-cover"
                   />

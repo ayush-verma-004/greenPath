@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getImageUrl } from "../utils/getImageUrl";
 
 const Fertilizers = () => {
   const [fertilizers, setFertilizers] = useState([]);
@@ -161,7 +162,7 @@ const Fertilizers = () => {
           >
             <div className="w-full h-64 bg-gray-100 flex items-center justify-center p-4">
               <img
-                src={`${item.image}`}
+                src={getImageUrl(item.image)}
                 alt={item.name}
                 className="max-h-full max-w-full object-contain transition-transform duration-300 hover:scale-105"
               />

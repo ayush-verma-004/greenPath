@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { getImageUrl } from "../utils/getImageUrl";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditCrop = () => {
@@ -250,7 +251,7 @@ const EditCrop = () => {
                   {existingImages.map((img, i) => (
                     <div key={i} className="relative">
                       <img
-                        src={img}
+                        src={getImageUrl(img)}
                         alt="crop"
                         className="w-full h-36 sm:h-40 object-cover rounded-lg shadow"
                       />

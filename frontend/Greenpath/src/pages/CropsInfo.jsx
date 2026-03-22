@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { getImageUrl } from "../utils/getImageUrl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useNavigate } from "react-router-dom";
 import {
@@ -184,15 +185,7 @@ export default function CropsInfo() {
               const contact = crop.contact ?? "";
 
               const imageUrls = (crop.images || [])
-                .map((img) => {
-                  if (!img) return null;
-
-                  // If already full URL
-                  if (img.startsWith("http")) return img;
-
-                  // For local uploads
-                  return `${img}`;
-                })
+                .map((img) => getImageUrl(img))
                 .filter(Boolean);
 
               const currentIndex = currentImageIndex[crop._id] || 0;

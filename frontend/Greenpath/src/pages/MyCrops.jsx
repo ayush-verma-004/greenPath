@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { getImageUrl } from "../utils/getImageUrl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
@@ -79,11 +80,7 @@ const MyCrops = () => {
               {crop.images?.length > 0 && (
                 <div className="relative w-full h-48 mb-3">
                   <img
-                    src={
-                      crop.images[currentIndexes[crop._id]]?.startsWith("http")
-                        ? crop.images[currentIndexes[crop._id]]
-                        : `${crop.images[currentIndexes[crop._id]]}`
-                    }
+                    src={getImageUrl(crop.images[currentIndexes[crop._id]])}
                     alt={crop.cropType}
                     className="w-full h-48 object-cover rounded"
                   />
