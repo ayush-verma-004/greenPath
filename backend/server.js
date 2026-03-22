@@ -28,14 +28,17 @@ app.use("/api/ai", aiRoutes);
 app.use("/api/fertilizers", fertilizerRoutes);
 app.use("/api/orders", orderRoutes);
 
-app.use(express.static(path.join(__dirname, "../frontend/Greenpath/dist")));
+// Disabled for separate Render deployments to prevent ENOENT errors
+// app.use(express.static(path.join(__dirname, "../frontend/Greenpath/dist")));
+// app.use((req, res, next) => {
+//   if (req.path.startsWith("/api") || req.path.startsWith("/uploads")) {
+//     return next();
+//   }
+//   res.sendFile(path.join(__dirname, "../frontend/Greenpath/dist/index.html"));
+// });
 
-app.use((req, res, next) => {
-  if (req.path.startsWith("/api") || req.path.startsWith("/uploads")) {
-    return next();
-  }
-
-  res.sendFile(path.join(__dirname, "../frontend/Greenpath/dist/index.html"));
+app.get("/", (req, res) => {
+  res.send("GreenPath API is running securely! 🚀");
 });
 mongoose
   .connect(process.env.MONGO_URI)
